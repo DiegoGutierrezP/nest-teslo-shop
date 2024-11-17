@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -15,10 +16,11 @@ import { CommonModule } from './common/common.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: true,//warning (dont use in production)
     }),
     ProductsModule,
-    CommonModule
+    CommonModule,
+    SeedModule
   ],
   controllers: [],
   providers: [],
